@@ -9,7 +9,10 @@ module.exports = router => {
     router.delete('/posts/:id', PostController.delete)
 
     router.post('/comments', CommentController.create);
-    router.get('/comments', CommentController.getAll)
+    router.get('/comments', CommentController.getAll);
+    router.get('/comments', CommentController.getOne);
+    router.patch('/comments', CommentController.update);
+    router.delete('/comments', CommentController.delete);
 
     return router;
 }

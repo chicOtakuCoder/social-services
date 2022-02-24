@@ -32,6 +32,41 @@ class CommentController {
         }
     }
 
+    static getOne = async (req, res) => {
+        try {
+            const comment = await Comment.findOne();
+
+            res.status(200).json(comment)
+        } catch (error) {
+            res.status(500).json('Server error');
+        }
+    }
+
+    static update = async (req, res) => {
+        try {
+            const comment = await Comment.findOne();
+            const updateComment = Object.assign(comment, req.body);
+
+            updateComment.save();
+
+            res.status(200).json(updateComment);
+        } catch (error) {
+            res.status(500).json('Server error');
+        }
+    }
+
+    static delete = async (req, res) => {
+        try {
+            const comment = await Comment.delete();
+
+            res.status(200).json('success');
+        } catch (error) {
+            res.status(500).json('Server error');
+        }
+        
+
+    }
+
     // getOne
     // update
     // delete
